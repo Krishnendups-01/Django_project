@@ -1,0 +1,9 @@
+.footer1{
+    display: flex;
+    padding-top: 5em;
+    gap: 5em;
+    padding-inline: 3em;
+    justify-content: space-between;
+    background-color:black;
+    color: rgb(120, 116, 116);
+}

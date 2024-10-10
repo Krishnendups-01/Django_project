@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   {% include "header.html" %}
+        <div style="padding-inline: 5em; padding-top: 2em;">
+            <h2 style="color: rgb(144, 5, 5);">Place Your Order</h2> <br>
+            <h5>Name:{{user.username}}</h5>
+            <h5>Email:{{user.email}}</h5>
+            <!-- <h2>Cart items</h2> -->
+             <ul>
+                {% for item in cart_item %}
+                <li>{{item.quantity}}x {{item.Product.name}} -${{item.Product.rate}}{% endfor %}
+             </ul>
+            <h6>Total Price:{{total}}</h6>
+            <h3>Address</h3>
+            <form method="POST">
+                {% csrf_token %}
+                <label for="address">Shipping Address</label>
+                <textarea name="address" id="address" rows="4" cols="60">{{existing_address}}</textarea>
+                <input type="submit" class="btn btn-warning" value="Place Order">
+            </form>
+
+        </div>
+</body>
+</html>

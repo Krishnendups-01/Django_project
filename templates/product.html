@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div>
+    {% comment %} {{data.images.url}} {% endcomment %}
+    <!-- <img class="airpod" src="{% static "images\airpods.webp" %}" alt=""> -->
+    {% comment %} <img src="{{data.images.url}}" style="height:10em" alt=""> {% endcomment %}
+    <div class="boatairpod">
+      <img src="{{data.images.url}}" style="height:10em" alt="">
+      <h4 class="boat">{{data.name}}</h4>
+      <p>{{data.rate}}</p>
+      <a href="{% url "product_details" i.id %}">
+      <button type="button" class="btn btn-danger" style="width: 9em;">View Product</button></a>
+    </div>
+  </div>
+  {% if user.is_superuser %}
+       
+      <a href="{% url 'edit' i.id %}" class="edit-btn">Edit</a>
+      <form action="{% url "delete" i.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="delete-btn" onclick = "return confirm('Are you sure you want to delete this product?');">Delete</button>
+      </form>
+  {% endif %}
+</body>
+</html>

@@ -1,0 +1,9 @@
+.cat{
+    padding-top: 4em;
+}
+.thismonth{
+    display: flex;
+    justify-content: space-between;
+    /* padding-inline: 4em; */
+    /* padding-block: 3em; */
+}

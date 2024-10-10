@@ -1,0 +1,46 @@
+{% extends "common.html" %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}Cart{% endblock title %}
+</head>
+<body>
+    {% block content %}
+       <div class="yourcart">
+          <h2>Your Cart</h2>
+       </div>
+       {% if cartprod %}
+            {% for item in cartprod %}
+                <div class="cartitems">
+                    <div>   
+                       <img src="{{item.Product.images.url}}" style="height: 14em;" alt="">
+                    </div>
+                    <div class="itemdetails" style="padding-bottom: 1em;">
+                      <h4>{{item.Product.name}}</h4>
+                      <p>{{item.Product.rate}}</p>
+                      <p>Qty:{{item.quantity}}</p>
+                      <!-- <p>Total:{{total}}</p> -->
+                      <!-- <p>{{item_price}}</p> -->
+                      <form method="POST" action="{% url 'remove' item.id %}" style="padding-bottom: 10px;">
+                         {% csrf_token %}
+                          <button type="submit" class="btn btn-outline-dark">Remove</button>
+                     </form>
+                        <button type="button" class="btn btn-warning">Place Order</button>
+                    </div>
+                </div>
+                <!-- <div>
+                    <button type="button" class="btn btn-outline-dark">Remove</button>
+                    <button type="button" class="btn btn-warning">Place Order</button>
+                </div> -->
+            {% endfor %}
+            <h2 style="text-align: center;">Total Price:{{total}}</h2>
+            <a href="{% url "orderconfirm" %}"><button type="button" class="btn btn-danger" style="width: 9em;">Place Order</button></a>
+       {% else %}
+          <p>Your Cart Is Empty!</p>
+       {% endif %} 
+    {% endblock content %}
+</body>
+</html>

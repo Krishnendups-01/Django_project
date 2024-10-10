@@ -1,0 +1,27 @@
+{% extends "common.html" %}
+{% block title %}Product_details{% endblock title %}
+{% block content %}
+{% load static %}
+
+<div class="product_details" style="padding-inline: 4em;">
+    <img src="{{Product.images.url}}" alt="" style="height: 14em;">
+    <div style="padding-inline: 3em; padding-bottom: 4em;">
+        <h4>{{Product.name}}</h4>
+        <p>{{Product.rate}}</p>
+        <p>{{Product.description}}</p>
+        <div style="display: flex; gap: 2em;">
+            <form action="{% url 'addcarts' Product.id %}"  onsubmit="showAlert()" method="post">
+                {% csrf_token %}
+                {% comment %} <a href="{% url 'addcarts' Product.id %}"><button type="button" class="btn btn-danger" style="width: 9em;">Add to Cart</button></a> {% endcomment %}
+            </form> 
+            <a href="{% url 'addcarts' Product.id %}"><button type="button" class="btn btn-danger" style="width: 9em;">Add to Cart</button></a>
+            <button type="button" class="btn btn-dark" style="width: 9em;">Buy Now</button>
+        </div> 
+    </div>
+</div>  
+<script>
+    function showAlert(){
+        alert("Product added to the cart");
+    }
+</script>
+{% endblock content %}

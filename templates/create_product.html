@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Product</title>
+</head>
+<body>
+    <h1>Create a new product</h1>
+    <form method="POST">
+      {% csrf_token %}
+      {{forms.as_p}}
+      <button type="submit"> Create Product</button>
+    </form>
+    <a href="createcategory">Create category</a>
+</body>
+</html>

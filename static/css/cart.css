@@ -1,0 +1,17 @@
+.yourcart{
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom:0.5em;
+    background-color: rgb(221, 149, 14);
+    color: rgb(9, 5, 5);
+}
+.cartitems{
+    display: flex;
+    padding-inline: 4em;
+    padding-top: 2em;
+   
+}
+.itemdetails{
+   padding-top: 2em;
+   padding-bottom: 2em;
+}

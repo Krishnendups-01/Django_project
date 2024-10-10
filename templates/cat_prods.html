@@ -1,0 +1,12 @@
+{% extends "common.html" %}
+{% block title %}Products by category{% endblock title %}
+
+{% block content %}
+{% load static %}
+<div class="shop">
+    {% for i in Product %}
+    {% include "product.html" with data=i %}
+    {% endfor %}
+</div>
+{% comment %} {% include "product.html" with data=i %} {% endcomment %}
+{% endblock content %}

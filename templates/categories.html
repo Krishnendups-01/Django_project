@@ -1,0 +1,23 @@
+{% extends "common.html" %}
+{% block title %}Category{% endblock title %}
+
+{% block content %}
+{% load static %}
+<div class="section3">
+    <div class="cat">
+      <!-- <p class="today">Categories</p> -->
+      <h2>Browse By Category</h2>
+    </div>
+    
+    <div class="icons">
+      {% for i in cat %}
+      <a href="{% url "prod_cat" i.id  %}" class="camera" style="text-decoration: none;">
+        <img src="{{i.images.url}}" alt="" class="category" style="height:14em " >
+        <h4 style="color: black;">{{i.name}}</h4>
+      </a>
+      {% endfor %}
+    </div>
+    
+    
+  </div>
+{% endblock content %}
